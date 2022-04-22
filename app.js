@@ -1,55 +1,82 @@
 'use strict';
-function Employee (EmployeeID , FullName , Department , Level , ImageURL , Salary){
-    this.EmployeeID = EmployeeID;
-    this.FullName = FullName;
-    this.Department = Department;
-    this.Level = Level;
-    this.ImageURL = ImageURL;
-    this.Salary = Salary ;
+let allEmployee=[];
+function Employee (EmployeeID , FullName , Department , Level , ImageURL){
+    this.employeeID = EmployeeID;
+    this.fullName = FullName;
+    this.department = Department;
+    this.level = Level;
+    this.imageURL = ImageURL;
+    this.salary=0;
+    allEmployee.push(this);
+    
 
 }
-Employee.prototype.render = function(){
-    if(this.level=="Junior")
-    {this.salary = Math.floor((Math.random() * 2000) + 1500);
+
         
-         
-
-    }else if(this.Level=="Mid-Senior")
-    {
-        this.Salary = Math.floor((Math.random() * 1500) + 1000);
-
-    }else
-     {
-        this.Salary = Math.floor((Math.random() * 1000) + 500);
-
-     }
-
-
-    document.write(`the name of emplyee is ${this.FullName} and the salary is ${this.salary} ######   `);
-    
-    
-    
-
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
-let gazi = new Employee(1000,"Ghazi Samer","Administration","Senior","./assets/dep.png");
-let lana = new Employee (1001,	"Lana Ali" ,"Finance","	Senior","./assets/dep.png",3000);
-let tamara = new Employee(1002,	"Tamara Ayoub","Marketing","Senior","./assets/dep.png",1000);
-let safi = new Employee(1003,"Safi Walid","	Administration","Mid-Senior","assets/dep.png",4000);
-let omar = new Employee(1004,"Omar Zaid	","Development","Senior","assets/dep.png",4000);
-let rana = new Employee(1005,"Rana Saleh","	Development	Junior","assets/dep.png",4000);
-let hadi = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","assets/dep.png",4000);
+Employee.prototype.netSalary=function(){
+    if(this.level === "Junior")
+    {
+        this.salary=getRndInteger(500,1000)
+        this.salary=this.salary * (1-0.075);
+   
+    }
+    else if(this.level === "Mid-Senior")
+    {
+        this.salary=getRndInteger(1000,1500)
+        this.salary=this.salary * (1-0.075);
+
+    }
+    else if(this.level === "Senior" )
+    {
+        this.salary=getRndInteger(1500,2000)
+        this.salary=this.salary * (1-0.057);
+
+    }
+   
+}
+Employee.prototype.render=function(){
+     
+      document.write(`the name of emplyee is ${this.fullName} and the salary   ${this.salary}${"**********"} `);       
+        
+    }
+
+
+
+let employee1 = new Employee(1000,"Ghazi Samer","Administration","Senior","./assets/dep.png");
+let employee2 = new Employee (1001,	"Lana Ali" ,"Finance","	Senior","./assets/dep.png");
+let employee3 = new Employee(1002,	"Tamara Ayoub","Marketing","Senior","./assets/dep.png");
+let employee4 = new Employee(1003,"Safi Walid","Administration","Mid-Senior","assets/dep.png");
+let employee5 = new Employee(1004,"Omar Zaid	","Development","Senior","assets/dep.png");
+let employee6 = new Employee(1005,"Rana Saleh","Development","Junior","assets/dep.png");
+let employee7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","assets/dep.png");
+
+employee1.netSalary();
+employee1.render();
+employee2.netSalary();
+employee2.render();
+employee3.netSalary();
+employee3.render();
+employee4.netSalary();
+employee4.render();
+employee5.netSalary();
+employee5.render();
+employee6.netSalary();
+employee6.render();
+employee7.netSalary();
+employee7.render();
+
+
+
+
+
+    
+    
 
 
 
 
 
 
-
-
-gazi.render();
-lana.render();
-tamara.render();
-safi.render();
-omar.render();
-rana.render();
-hanadi.render();
