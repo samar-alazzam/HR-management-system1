@@ -1,6 +1,9 @@
 'use strict';
 let allEmployee=[];
-function Employee (EmployeeID , FullName , Department , Level , ImageURL){
+let formEL = document.getElementById("formID");
+let main =document.getElementById("mainID") ; 
+
+function Employee (   EmployeeID,FullName , Department , Level , ImageURL){
     this.employeeID = EmployeeID;
     this.fullName = FullName;
     this.department = Department;
@@ -39,19 +42,56 @@ Employee.prototype.netSalary=function(){
 }
 Employee.prototype.render=function(){
      
-      document.write(`the name of emplyee is ${this.fullName} and the salary   ${this.salary} `);       
-        
-    }
+    //   document.write(`the name of emplyee is ${this.fullName} and employee number is ${this.employeeID}  and the salary ${this.salary} `);  
+ let image= document.createElement("img");
+ image.src=this.imageURL;
+ image.style.width="150px";
+ main.appendChild(image);
+
+    
+let name = document.createElement("p");  
+name.textContent= `Name :${ this.fullName}`;
+
+ main.appendChild(name);
+// create image
+
+let id = document.createElement("p");  
+id.textContent= this.employeeID;
+ main.appendChild(id);
+ 
+
+}
 
 
 
-let employee1 = new Employee(1000,"Ghazi Samer","Administration","Senior","./assets/dep.png");
-let employee2 = new Employee (1001,	"Lana Ali" ,"Finance","	Senior","./assets/dep.png");
-let employee3 = new Employee(1002,	"Tamara Ayoub","Marketing","Senior","./assets/dep.png");
-let employee4 = new Employee(1003,"Safi Walid","Administration","Mid-Senior","assets/dep.png");
-let employee5 = new Employee(1004,"Omar Zaid	","Development","Senior","assets/dep.png");
-let employee6 = new Employee(1005,"Rana Saleh","Development","Junior","assets/dep.png");
-let employee7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","assets/dep.png");
+let employee1 = new Employee(1000,"Ghazi Samer","Administration","Senior","./assets/Ghazi.jpg");
+let employee2 = new Employee (1001,"Lana Ali" ,"Finance","	Senior","./assets/Lana.jpg");
+let employee3 = new Employee(1002,"Tamara Ayoub","Marketing","Senior","./assets/Tamara.jpg");
+let employee4 = new Employee(1003,"Safi Walid","Administration","Mid-Senior","./assets/Safi.jpg");
+let employee5 = new Employee(1004,"Omar Zaid	","Development","Senior","./assets/Omar.jpg");
+let employee6 = new Employee(1005,"Rana Saleh","Development","Junior","./assets/Rana.jpg");
+let employee7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","./assets/Hadi.jpg");
+
+
+formEL.addEventListener("submit" , handleSubmit);
+function handleSubmit (event)
+{
+    
+    event.preventDefault();
+    let employeeID = event.target.employeeID.value;
+    let fullName = event.target.fname.value;
+    let department = event.target.department.value;  
+    let level = event.target.level.value;  
+    let imageURL = event.target.image.value; 
+    let newEmployee = new Employee (employeeID,fullName , department ,level , imageURL);
+    newEmployee.render();
+
+ 
+} 
+
+
+
+
 
 // employee1.netSalary();
 // employee1.render();
@@ -71,8 +111,24 @@ let employee7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","assets/de
 for (let i = 0; i < allEmployee.length; i++) {
     allEmployee[i].netSalary();
     allEmployee[i].render();
+    // allEmployee.uniqueNumber();
     
 }
+    
+Employee.prototype.uniqueNumber=function()
+{
+    
+
+    this.employeeID= Math.floor(1000 + Math.random() * 9000);
+
+
+
+}
+
+
+
+
+
 
 
 
