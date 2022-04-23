@@ -39,7 +39,7 @@ Employee.prototype.netSalary=function(){
 }
 Employee.prototype.render=function(){
      
-      document.write(`the name of emplyee is ${this.fullName} and the salary   ${this.salary}${"**********"} `);       
+      document.write(`the name of emplyee is ${this.fullName} and the salary   ${this.salary} `);       
         
     }
 
@@ -53,20 +53,26 @@ let employee5 = new Employee(1004,"Omar Zaid	","Development","Senior","assets/de
 let employee6 = new Employee(1005,"Rana Saleh","Development","Junior","assets/dep.png");
 let employee7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","assets/dep.png");
 
-employee1.netSalary();
-employee1.render();
-employee2.netSalary();
-employee2.render();
-employee3.netSalary();
-employee3.render();
-employee4.netSalary();
-employee4.render();
-employee5.netSalary();
-employee5.render();
-employee6.netSalary();
-employee6.render();
-employee7.netSalary();
-employee7.render();
+// employee1.netSalary();
+// employee1.render();
+// employee2.netSalary();
+// employee2.render();
+// employee3.netSalary();
+// employee3.render();
+// employee4.netSalary();
+// employee4.render();
+// employee5.netSalary();
+// employee5.render();
+// employee6.netSalary();
+// employee6.render();
+// employee7.netSalary();
+// employee7.render();
+
+for (let i = 0; i < allEmployee.length; i++) {
+    allEmployee[i].netSalary();
+    allEmployee[i].render();
+    
+}
 
 
 
