@@ -59,6 +59,16 @@ let id = document.createElement("p");
 id.textContent= this.employeeID;
  main.appendChild(id);
  
+ // departmet
+ let depar = document.createElement("P");
+ depar.textContent = this.department;
+ main.appendChild(depar);
+
+ //unique number
+ let uniNum = document.createElement("P");
+ 
+
+
 
 }
 
