@@ -2,9 +2,11 @@
 let allEmployee=[];
 let formEL = document.getElementById("formID");
 let main =document.getElementById("mainID") ; 
+let id=999;
 
-function Employee (   EmployeeID,FullName , Department , Level , ImageURL){
-    this.employeeID = EmployeeID;
+function Employee (  FullName , Department , Level , ImageURL){
+    
+    this.employeeID = unique();
     this.fullName = FullName;
     this.department = Department;
     this.level = Level;
@@ -63,10 +65,25 @@ id.textContent= this.employeeID;
  let depar = document.createElement("P");
  depar.textContent = this.department;
  main.appendChild(depar);
+   
 
+ // level
+ let level = document.createElement("p");
+ level.textContent=this.level;
+ main.appendChild(level);
+
+ //salary
+ let salary=document.createElement("p");
+ salary.textContent=`the salary is ${this.salary}`;
+ main.appendChild(salary);
  //unique number
- let uniNum = document.createElement("P");
- 
+ //let unnumber = document.createElement("P");
+ //unnumber.textContent=this.uniqueNumber();
+ //main.appendChild(unnumber);
+
+
+
+
 
 
 
@@ -74,13 +91,13 @@ id.textContent= this.employeeID;
 
 
 
-let employee1 = new Employee(1000,"Ghazi Samer","Administration","Senior","./assets/Ghazi.jpg");
-let employee2 = new Employee (1001,"Lana Ali" ,"Finance","	Senior","./assets/Lana.jpg");
-let employee3 = new Employee(1002,"Tamara Ayoub","Marketing","Senior","./assets/Tamara.jpg");
-let employee4 = new Employee(1003,"Safi Walid","Administration","Mid-Senior","./assets/Safi.jpg");
-let employee5 = new Employee(1004,"Omar Zaid	","Development","Senior","./assets/Omar.jpg");
-let employee6 = new Employee(1005,"Rana Saleh","Development","Junior","./assets/Rana.jpg");
-let employee7 = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior","./assets/Hadi.jpg");
+let employee1 = new Employee("Ghazi Samer","Administration","Senior","./assets/Ghazi.jpg");
+let employee2 = new Employee ("Lana Ali" ,"Finance","	Senior","./assets/Lana.jpg");
+let employee3 = new Employee("Tamara Ayoub","Marketing","Senior","./assets/Tamara.jpg");
+let employee4 = new Employee("Safi Walid","Administration","Mid-Senior","./assets/Safi.jpg");
+let employee5 = new Employee("Omar Zaid	","Development","Senior","./assets/Omar.jpg");
+let employee6 = new Employee("Rana Saleh","Development","Junior","./assets/Rana.jpg");
+let employee7 = new Employee("Hadi Ahmad","Finance","Mid-Senior","./assets/Hadi.jpg");
 
 
 formEL.addEventListener("submit" , handleSubmit);
@@ -121,19 +138,18 @@ function handleSubmit (event)
 for (let i = 0; i < allEmployee.length; i++) {
     allEmployee[i].netSalary();
     allEmployee[i].render();
-    // allEmployee.uniqueNumber();
     
 }
     
-Employee.prototype.uniqueNumber=function()
+function unique ()
 {
+    id++;
+    return id;
     
 
-    this.employeeID= Math.floor(1000 + Math.random() * 9000);
-
-
-
 }
+
+
 
 
 
